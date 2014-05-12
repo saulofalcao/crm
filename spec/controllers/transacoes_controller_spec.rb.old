@@ -1,0 +1,26 @@
+require 'spec_helper'
+
+describe TransacoesController do
+
+  describe "GET 'lista'" do
+    it "returns http success" do
+      get 'lista'
+      response.should be_success
+    end
+  end
+
+  describe "GET 'nova'" do
+    it "returns http success" do
+      get 'nova'
+      response.should be_success
+    end
+  end
+
+  describe "GET 'edita'" do
+    it "returns http success" do
+      get 'edita'
+      response.should be_success
+    end
+  end
+
+end
