@@ -11,13 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416224233) do
+ActiveRecord::Schema.define(version: 20140512235816) do
+
+  create_table "agendamentos", force: true do |t|
+    t.string   "paciente"
+    t.string   "data"
+    t.string   "hora"
+    t.string   "medico"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "aulas", force: true do |t|
     t.string   "titulo"
     t.text     "descricao"
     t.integer  "professor_id"
     t.datetime "horario"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "medicos", force: true do |t|
+    t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pacientes", force: true do |t|
+    t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
