@@ -8,10 +8,10 @@ describe "StaticPages" do
 
 
     it { should have_title("Agendamento Médico") }
-    it { should have_text("Bem Vindo ao Agendamento Médico") }
+    it { should have_text("Agendamento Médico") }
     #it { should have_text('Bem Vindo ao Sistema de Reservas') }
     it { should have_link("Acessar") }
-    it { should have_button('Acessar') }
+   # it { should have_button('Acessar') }
   end
 
   describe "Página Ajuda  - static_pages/ajuda" do

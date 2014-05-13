@@ -2822,3 +2822,85 @@ Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+  [1m[36m (165.3ms)[0m  [1mCREATE TABLE "agendamentos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "data" varchar(255), "hora" varchar(255), "created_at" datetime, "updated_at" datetime, "paciente_id" integer, "medico_id" integer) [0m
+  [1m[35m (199.6ms)[0m  CREATE INDEX "index_agendamentos_on_data" ON "agendamentos" ("data")
+  [1m[36m (199.8ms)[0m  [1mCREATE INDEX "index_agendamentos_on_hora" ON "agendamentos" ("hora")[0m
+  [1m[35m (216.6ms)[0m  CREATE INDEX "index_agendamentos_on_medico_id" ON "agendamentos" ("medico_id")
+  [1m[36m (182.9ms)[0m  [1mCREATE INDEX "index_agendamentos_on_paciente_id" ON "agendamentos" ("paciente_id")[0m
+  [1m[35m (449.9ms)[0m  CREATE TABLE "aulas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar(255), "descricao" text, "professor_id" integer, "horario" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (166.3ms)[0m  [1mCREATE TABLE "medicos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (426.5ms)[0m  CREATE TABLE "pacientes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (516.7ms)[0m  [1mCREATE TABLE "professors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (208.8ms)[0m  CREATE TABLE "quartos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (224.3ms)[0m  [1mCREATE TABLE "remedios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "descricao" varchar(255), "quantidade" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (166.2ms)[0m  CREATE TABLE "reservas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "start_date" date, "end_date" date, "created_at" datetime, "updated_at" datetime, "quarto_id" integer) 
+  [1m[36m (157.9ms)[0m  [1mCREATE TABLE "transacaos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "valor" float, "nome" varchar(255), "descricao" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (182.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "password_digest" varchar(255), "remember_token" varchar(255)) 
+  [1m[36m (183.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (191.6ms)[0m  CREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")
+  [1m[36m (165.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (166.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (159.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140513005513')
+  [1m[36m (175.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131125064308')[0m
+  [1m[35m (150.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407193851')
+  [1m[36m (175.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131211053856')[0m
+  [1m[35m (150.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140209143654')
+  [1m[36m (150.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512225955')[0m
+  [1m[35m (125.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140209154709')
+  [1m[36m (225.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140416224233')[0m
+  [1m[35m (217.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131203122536')
+  [1m[36m (142.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512235816')[0m
+  [1m[35m (150.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131211053705')
+  [1m[36m (202.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140209163922')[0m
+  [1m[35m (183.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140513003527')
+  [1m[36m (141.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131203121455')[0m
+  [1m[35m (133.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140512235714')
+  [1m[36m (441.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131211053529')[0m
+  [1m[35m (600.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140202210548')
+  [1m[36m (150.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140513003121')[0m
+  [1m[35m (141.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140202210005')
+  [1m[36m (167.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131211053719')[0m
+  [1m[35m (142.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140202194808')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (314.8ms)[0m  [1mCREATE TABLE "agendamentos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "data" varchar(255), "hora" varchar(255), "created_at" datetime, "updated_at" datetime, "paciente_id" integer, "medico_id" integer) [0m
+  [1m[35m (166.4ms)[0m  CREATE INDEX "index_agendamentos_on_data" ON "agendamentos" ("data")
+  [1m[36m (149.8ms)[0m  [1mCREATE INDEX "index_agendamentos_on_hora" ON "agendamentos" ("hora")[0m
+  [1m[35m (157.8ms)[0m  CREATE INDEX "index_agendamentos_on_medico_id" ON "agendamentos" ("medico_id")
+  [1m[36m (124.6ms)[0m  [1mCREATE INDEX "index_agendamentos_on_paciente_id" ON "agendamentos" ("paciente_id")[0m
+  [1m[35m (166.2ms)[0m  CREATE TABLE "aulas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar(255), "descricao" text, "professor_id" integer, "horario" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (157.8ms)[0m  [1mCREATE TABLE "medicos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (157.9ms)[0m  CREATE TABLE "pacientes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (132.9ms)[0m  [1mCREATE TABLE "professors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (224.5ms)[0m  CREATE TABLE "quartos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (149.4ms)[0m  [1mCREATE TABLE "remedios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "descricao" varchar(255), "quantidade" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (116.3ms)[0m  CREATE TABLE "reservas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "start_date" date, "end_date" date, "created_at" datetime, "updated_at" datetime, "quarto_id" integer) 
+  [1m[36m (149.6ms)[0m  [1mCREATE TABLE "transacaos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "valor" float, "nome" varchar(255), "descricao" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (142.8ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "password_digest" varchar(255), "remember_token" varchar(255)) 
+  [1m[36m (199.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (158.1ms)[0m  CREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")
+  [1m[36m (148.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (200.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (333.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140513005513')
+  [1m[36m (308.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131125064308')[0m
+  [1m[35m (158.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407193851')
+  [1m[36m (192.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131211053856')[0m
+  [1m[35m (158.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140209143654')
+  [1m[36m (176.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512225955')[0m
+  [1m[35m (150.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140209154709')
+  [1m[36m (150.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140416224233')[0m
+  [1m[35m (191.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131203122536')
+  [1m[36m (158.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512235816')[0m
+  [1m[35m (225.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131211053705')
+  [1m[36m (125.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140209163922')[0m
+  [1m[35m (125.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140513003527')
+  [1m[36m (150.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131203121455')[0m
+  [1m[35m (166.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140512235714')
+  [1m[36m (150.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131211053529')[0m
+  [1m[35m (167.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140202210548')
+  [1m[36m (218.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140513003121')[0m
+  [1m[35m (217.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140202210005')
+  [1m[36m (200.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131211053719')[0m
+  [1m[35m (158.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140202194808')

@@ -1,5 +1,5 @@
 def full_title(page_title)
-  base_title = "Sistema de Finanças"
+  base_title = "Agendamento Médico"
   if page_title.empty?
     base_title
   else

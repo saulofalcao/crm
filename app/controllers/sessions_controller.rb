@@ -19,6 +19,15 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
+		# exclui o cookie, seta o usuario para nil e
+		# gera um novo hash no campo hash do remember_token do usuario
+		# (para o caso do cookie ter sido roubado, e para encerrar a sessao
+		# em outro navegador)
+		# redireciona para a url root
+		cookies.delete(:remember_token)
+		self.current_user=nil
+		redirect_to root_url
+
 	end
 
 end
