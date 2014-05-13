@@ -5,4 +5,10 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
   end
+  factory :agendamento do
+  	paciente 	"João da Silva"
+  	data		"2014-06-01"
+  	horario		"1830"
+  	medico		"Paulo Lopes"
+  end
 end

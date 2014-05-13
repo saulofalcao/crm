@@ -32,7 +32,7 @@ describe "User pages" do
       describe "depois de salvar o usuario" do
         before {click_button submit}
         let(:user) {User.find_by(email: 'user2@example.com')}
-         it { should have_link('Acessar', href: signin_path) }
+         it { should_not have_link('Acessar', href: signin_path) }
         it { should have_title(user.nome) }
         it { should have_selector("div.alert.alert-success") }
        
