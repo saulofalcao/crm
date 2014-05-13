@@ -4,5 +4,5 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
  # include ReservasHelper
  include SessionsHelper
- $base_name="Sistema de Finanças"
+ $base_name="Agendamento Médico"
 end
