@@ -2438,3 +2438,387 @@ Migrating to CreateMedicos (20140512235816)
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140512235816"]]
   [1m[36m (359.1ms)[0m  [1mcommit transaction[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (361.5ms)[0m  [1mCREATE TABLE "agendamentos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "paciente" varchar(255), "data" varchar(255), "hora" varchar(255), "medico" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (353.9ms)[0m  CREATE TABLE "aulas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar(255), "descricao" text, "professor_id" integer, "horario" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (423.6ms)[0m  [1mCREATE TABLE "medicos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (454.4ms)[0m  CREATE TABLE "pacientes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (332.2ms)[0m  [1mCREATE TABLE "professors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (310.1ms)[0m  CREATE TABLE "quartos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (354.5ms)[0m  [1mCREATE TABLE "remedios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "descricao" varchar(255), "quantidade" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (343.4ms)[0m  CREATE TABLE "reservas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "start_date" date, "end_date" date, "created_at" datetime, "updated_at" datetime, "quarto_id" integer) 
+  [1m[36m (354.4ms)[0m  [1mCREATE TABLE "transacaos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "valor" float, "nome" varchar(255), "descricao" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (365.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime, "password_digest" varchar(255), "remember_token" varchar(255)) 
+  [1m[36m (355.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (401.8ms)[0m  CREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")
+  [1m[36m (364.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (355.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (354.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140512235816')
+  [1m[36m (355.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131211053719')[0m
+  [1m[35m (359.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140512235714')
+  [1m[36m (618.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131211053856')[0m
+  [1m[35m (333.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140209163922')
+  [1m[36m (336.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140202210005')[0m
+  [1m[35m (344.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140416224233')
+  [1m[36m (355.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131203122536')[0m
+  [1m[35m (355.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140202210548')
+  [1m[36m (355.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131203121455')[0m
+  [1m[35m (355.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131211053705')
+  [1m[36m (344.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131211053529')[0m
+  [1m[35m (322.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140209143654')
+  [1m[36m (323.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512225955')[0m
+  [1m[35m (424.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131125064308')
+  [1m[36m (355.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140202194808')[0m
+  [1m[35m (355.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140407193851')
+  [1m[36m (355.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140209154709')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to Agendamento (20140513003121)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to Agendamento (20140513003121)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "aagendamentos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "paciente" varchar(255), "data" varchar(255), "hora" varchar(255), "medico" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "agendamentos"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aagendamentos" ("id","paciente","data","hora","medico","created_at","updated_at") VALUES (1, '', '', '', '', '2014-05-12 23:06:52.355439', '2014-05-12 23:06:52.355439')[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "agendamentos"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "agendamentos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "data" varchar(255), "hora" varchar(255), "medico" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aagendamentos"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "agendamentos" ("id","data","hora","medico","created_at","updated_at") VALUES (1, '', '', '', '2014-05-12 23:06:52.355439', '2014-05-12 23:06:52.355439')[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "aagendamentos"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140513003121"]]
+  [1m[35m (448.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveColumnFromAgendamento (20140513003527)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "aagendamentos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "data" varchar(255), "hora" varchar(255), "medico" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "agendamentos"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aagendamentos" ("id","data","hora","medico","created_at","updated_at") VALUES (1, '', '', '', '2014-05-12 23:06:52.355439', '2014-05-12 23:06:52.355439')[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "agendamentos"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "agendamentos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "data" varchar(255), "hora" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "aagendamentos"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "agendamentos" ("id","data","hora","created_at","updated_at") VALUES (1, '', '', '2014-05-12 23:06:52.355439', '2014-05-12 23:06:52.355439')[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "aagendamentos"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140513003527"]]
+  [1m[35m (454.4ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddColumnToAgendamento (20140513005513)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "agendamentos" ADD "paciente_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140513005513"]]
+  [1m[36m (419.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to AddColumnToAgendamento (20140513005513)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "aagendamentos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "data" varchar(255), "hora" varchar(255), "created_at" datetime, "updated_at" datetime, "paciente_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "agendamentos"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aagendamentos" ("id","data","hora","created_at","updated_at","paciente_id") VALUES (1, '', '', '2014-05-12 23:06:52.355439', '2014-05-12 23:06:52.355439', NULL)
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "agendamentos"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "agendamentos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "data" varchar(255), "hora" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "aagendamentos"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "agendamentos" ("id","data","hora","created_at","updated_at") VALUES (1, '', '', '2014-05-12 23:06:52.355439', '2014-05-12 23:06:52.355439')
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "aagendamentos"[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20140513005513'
+  [1m[36m (381.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddColumnToAgendamento (20140513005513)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "agendamentos" ADD "paciente_id" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "agendamentos" ADD "medico_id" integer
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddColumnToAgendamento (20140513005513)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "agendamentos" ADD "paciente_id" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "agendamentos" ADD "medico_id" integer
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_agendamentos_on_paciente_id" ON "agendamentos" ("paciente_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_agendamentos_on_medico_id" ON "agendamentos" ("medico_id")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_agendamentos_on_hora" ON "agendamentos" ("hora")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_agendamentos_on_data" ON "agendamentos" ("data")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140513005513"]]
+  [1m[35m (403.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  INSERT INTO "pacientes" ("created_at", "nome", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 13 May 2014 01:03:03 UTC +00:00], ["nome", "joao da Silva"], ["updated_at", Tue, 13 May 2014 01:03:03 UTC +00:00]]
+  [1m[36m (340.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mAgendamento Load (0.6ms)[0m  SELECT "agendamentos".* FROM "agendamentos" WHERE "agendamentos"."paciente_id" = ?  [["paciente_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "medicos" ("created_at", "nome", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 13 May 2014 01:09:45 UTC +00:00], ["nome", "Pedro Alves"], ["updated_at", Tue, 13 May 2014 01:09:45 UTC +00:00]]
+  [1m[36m (358.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mPaciente Load (0.2ms)[0m  [1mSELECT "pacientes".* FROM "pacientes" WHERE "pacientes"."id" = ? ORDER BY "pacientes"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mAgendamento Exists (0.1ms)[0m  SELECT 1 AS one FROM "agendamentos" WHERE ("agendamentos"."hora" IS NULL AND "agendamentos"."data" IS NULL) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mPaciente Load (0.3ms)[0m  [1mSELECT "pacientes".* FROM "pacientes" WHERE "pacientes"."id" = ? ORDER BY "pacientes"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mAgendamento Exists (0.3ms)[0m  SELECT 1 AS one FROM "agendamentos" WHERE ("agendamentos"."hora" IS NULL AND "agendamentos"."data" IS NULL) LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mPaciente Load (4.9ms)[0m  [1mSELECT "pacientes".* FROM "pacientes" WHERE "pacientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAgendamento Load (0.2ms)[0m  SELECT "agendamentos".* FROM "agendamentos" WHERE "agendamentos"."paciente_id" = ?  [["paciente_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mAgendamento Exists (0.1ms)[0m  SELECT 1 AS one FROM "agendamentos" WHERE ("agendamentos"."hora" IS NULL AND "agendamentos"."data" IS NULL) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mPaciente Load (4.8ms)[0m  [1mSELECT "pacientes".* FROM "pacientes" WHERE "pacientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAgendamento Load (0.2ms)[0m  SELECT "agendamentos".* FROM "agendamentos" WHERE "agendamentos"."paciente_id" = ?  [["paciente_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mAgendamento Exists (0.1ms)[0m  SELECT 1 AS one FROM "agendamentos" WHERE ("agendamentos"."hora" IS NULL AND "agendamentos"."data" IS NULL) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mAgendamento Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "agendamentos" WHERE ("agendamentos"."hora" IS NULL AND "agendamentos"."data" IS NULL) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mAgendamento Exists (0.4ms)[0m  SELECT 1 AS one FROM "agendamentos" WHERE ("agendamentos"."hora" = '1030' AND "agendamentos"."data" = '2014-06-02') LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mPaciente Load (1.8ms)[0m  [1mSELECT "pacientes".* FROM "pacientes" WHERE "pacientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAgendamento Load (0.2ms)[0m  SELECT "agendamentos".* FROM "agendamentos" WHERE "agendamentos"."paciente_id" = ?  [["paciente_id", 1]]
+  [1m[36mMedico Load (0.5ms)[0m  [1mSELECT "medicos".* FROM "medicos" WHERE "medicos"."paciente_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: medicos.paciente_id: SELECT "medicos".* FROM "medicos"  WHERE "medicos"."paciente_id" = ?
+  [1m[35mMedico Load (0.5ms)[0m  SELECT "medicos".* FROM "medicos" WHERE "medicos"."paciente_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: medicos.paciente_id: SELECT "medicos".* FROM "medicos"  WHERE "medicos"."paciente_id" = ?
+  [1m[36mMedico Load (0.5ms)[0m  [1mSELECT "medicos".* FROM "medicos" WHERE "medicos"."paciente_id" = ?[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: medicos.paciente_id: SELECT "medicos".* FROM "medicos"  WHERE "medicos"."paciente_id" = ?
+  [1m[35mMedico Load (0.5ms)[0m  SELECT "medicos".* FROM "medicos" WHERE "medicos"."paciente_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: medicos.paciente_id: SELECT "medicos".* FROM "medicos"  WHERE "medicos"."paciente_id" = ?
+  [1m[36mMedico Load (0.4ms)[0m  [1mSELECT "medicos".* FROM "medicos" WHERE "medicos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAgendamento Load (0.6ms)[0m  SELECT "agendamentos".* FROM "agendamentos" WHERE "agendamentos"."medico_id" = ?  [["medico_id", 1]]
+  [1m[36mPaciente Load (1.7ms)[0m  [1mSELECT "pacientes".* FROM "pacientes" WHERE "pacientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAgendamento Load (0.2ms)[0m  SELECT "agendamentos".* FROM "agendamentos" WHERE "agendamentos"."paciente_id" = ?  [["paciente_id", 1]]
+  [1m[36mMedico Load (0.3ms)[0m  [1mSELECT "medicos".* FROM "medicos" INNER JOIN "agendamentos" ON "medicos"."id" = "agendamentos"."medico_id" WHERE "agendamentos"."paciente_id" = ?[0m  [["paciente_id", 1]]
+  [1m[35mMedico Load (0.5ms)[0m  SELECT "medicos".* FROM "medicos" WHERE "medicos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPaciente Load (1.8ms)[0m  [1mSELECT "pacientes".* FROM "pacientes" WHERE "pacientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mAgendamento Load (0.1ms)[0m  SELECT "agendamentos".* FROM "agendamentos" WHERE "agendamentos"."paciente_id" = ?  [["paciente_id", 1]]
+  [1m[36mMedico Load (0.4ms)[0m  [1mSELECT "medicos".* FROM "medicos" WHERE "medicos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mAgendamento Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "agendamentos" WHERE ("agendamentos"."hora" = '1100' AND "agendamentos"."data" = '2014-06-03') LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "agendamentos" ("created_at", "data", "hora", "medico_id", "paciente_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 13 May 2014 02:00:32 UTC +00:00], ["data", "2014-06-03"], ["hora", "1100"], ["medico_id", 1], ["paciente_id", 1], ["updated_at", Tue, 13 May 2014 02:00:32 UTC +00:00]]
+  [1m[36m (393.0ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/users/2" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_shim.html.erb (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = '363dbb0829d1b068eb98f20eed1fdcd595ea7b22' LIMIT 1
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 36ms (Views: 26.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/professors.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/aulas.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/reservas.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/remedios.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/stylesheets/scaffolds.css.old.css" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/scaffolds.css.old.css"):
+  actionpack (4.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.1) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.1) lib/rails/engine.rb:511:in `call'
+  railties (4.0.1) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/saulo/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/saulo/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/saulo/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.1ms)
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (20.8ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/transacoes.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/stylesheets/sessions.css.old.css" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/sessions.css.old.css"):
+  actionpack (4.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.1) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.1) lib/rails/engine.rb:511:in `call'
+  railties (4.0.1) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/saulo/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/saulo/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/saulo/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.3ms)
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.1ms)
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (23.1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/javascripts/sessions.js.old.js" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/sessions.js.old.js"):
+  actionpack (4.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.1) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.1) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.1) lib/rails/engine.rb:511:in `call'
+  railties (4.0.1) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/saulo/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/saulo/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/saulo/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.1ms)
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /home/saulo/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (18.4ms)
+
+
+Started GET "/assets/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/aulas.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/professors.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/remedios.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/reservas.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/transacoes.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-12 23:03:54 -0300

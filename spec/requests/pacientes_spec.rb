@@ -1,11 +1,22 @@
 require 'spec_helper'
 
-describe "Pacientes" do
-  describe "GET /pacientes" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get pacientes_path
-      response.status.should be(200)
-    end
+describe "Testa Validade do modelo Paciente" do
+  describe "com dados em branco" do
+  	before do
+  		@paciente = Paciente.new(nome: "")
+  	end
+  	subject {@paciente}
+
+  	it { should_not be_valid}
+
   end
+  describe "com dados validos" do
+  	before do
+  		@paciente = Paciente.new(nome: "João da Silva Sauro")
+  	end
+  	subject {@paciente}
+
+  	it { should be_valid}
+  end
+  
 end

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "Agendamentos" do
+describe "Testa Validade do modelo Agendamento" do
 	describe "tenta criar agendamento com valores em branco" do
 
 	    before do
-    		@agendamento = Agendamento.new(paciente: "", data: "", hora: "", medico: "")
+    		@agendamento = Agendamento.new(data: "", hora: "")
     	end
 
     	subject {@agendamento}
@@ -13,10 +13,16 @@ describe "Agendamentos" do
     end
     describe "Agendamento com valores validos" do
     	before do
-    		@agendamento = Agendamento.new(paciente: "João da Silva", data: "2014-06-01", hora: "1830", medico: "Pedro Arantes")
+    		@agendamento = Agendamento.new(data: "2014-06-01", hora: "1830")
     	end
     	subject {@agendamento}
     	it { should be_valid }
     end
+    # describe "Testa relacionamento de Agendamento com modelo Medico" do
+    # 	before do
+    # 		@agendamento = Agendamento.new(data: "2014-06-01", hora: "1830", paciente: "")
+    # 	end
+    # end
+
 	
 end

@@ -11,16 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512235816) do
+ActiveRecord::Schema.define(version: 20140513005513) do
 
   create_table "agendamentos", force: true do |t|
-    t.string   "paciente"
     t.string   "data"
     t.string   "hora"
-    t.string   "medico"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "paciente_id"
+    t.integer  "medico_id"
   end
+
+  add_index "agendamentos", ["data"], name: "index_agendamentos_on_data"
+  add_index "agendamentos", ["hora"], name: "index_agendamentos_on_hora"
+  add_index "agendamentos", ["medico_id"], name: "index_agendamentos_on_medico_id"
+  add_index "agendamentos", ["paciente_id"], name: "index_agendamentos_on_paciente_id"
 
   create_table "aulas", force: true do |t|
     t.string   "titulo"

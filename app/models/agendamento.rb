@@ -1,5 +1,8 @@
 class Agendamento < ActiveRecord::Base
-	 validates :paciente, :data, :medico, 
+	belongs_to :paciente
+	belongs_to :medico
+
+	 validates :paciente_id, :medico_id, :data, 
 							 presence: true
 	 validates :hora, 
 				presence: true,
