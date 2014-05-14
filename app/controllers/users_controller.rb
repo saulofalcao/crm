@@ -5,12 +5,9 @@ class UsersController < ApplicationController
 		# que não deve ter pemissao de ver outros
 		if ( self.current_user != @user )
 			flash[:error] = "Erro ao acessar página de outro usuário"
-			if self.current_user
-				redirect_to user_path(self.current_user)
-			else
-				redirect_to root_url
-			end
-			# TODO deve mostrar mensagem de erro
+			
+			# TODO redirecionar para pagina do usuário e nao para o root
+			redirect_to root_url
 		end
 	end
 

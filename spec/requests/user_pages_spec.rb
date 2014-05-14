@@ -85,9 +85,9 @@ describe "Página de Perfil" do
       # it { should have_link('Acessar', href: signin_path) }
       # it { should_not have_link('Sair', href: signout_path) }
       it { should_not have_title(user.nome) }
-      it ", ainda implementando" do
-        pending "Não era para passar esse teste ainda"
-      end
+      # it ", ainda implementando" do
+        # pending "Não era para passar esse teste ainda"
+      # end
 
     end
 

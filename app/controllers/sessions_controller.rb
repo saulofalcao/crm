@@ -24,9 +24,11 @@ class SessionsController < ApplicationController
 		# (para o caso do cookie ter sido roubado, e para encerrar a sessao
 		# em outro navegador)
 		# redireciona para a url root
-		cookies.delete(:remember_token)
-		self.current_user=nil
+		#cookies.delete(:remember_token)
+		#self.current_user=nil
+		sign_out
 		redirect_to root_url
+		#sign_out
 
 	end
 
