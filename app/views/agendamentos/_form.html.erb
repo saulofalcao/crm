@@ -1,0 +1,6 @@
+<%= form_for(@agendamento) do |f| %>
+<%= f.label :Paciente, "Paciente" %>
+<%= f.text_field :paciente %>
+<%= f.submit "Criar Agendamento", :class =>"btn btn-medium btn-primary" %>
+<% end %>
+
