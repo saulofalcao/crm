@@ -14,6 +14,8 @@ ControleDeEstoque::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :agendamentos
+  resources :pacientes
   #resources :professors
   #resources :aulas
   #resources :reservas

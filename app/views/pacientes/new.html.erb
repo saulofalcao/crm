@@ -1,0 +1,5 @@
+<%= form_for(@paciente) do |f| %>
+<%= f.label :Paciente, "Nome do Paciente" %>
+<%= f.text_field :nome %>
+<%= f.submit "Incluir Paciente", :class =>"btn btn-medium btn-primary" %>
+<% end %>
