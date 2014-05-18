@@ -1,0 +1,22 @@
+$(function () {
+	var data_e_hora_atual = new Date()
+	var mes = data_e_hora_atual.getMonth()
+	var dia = data_e_hora_atual.getDate()
+	var ano = data_e_hora_atual.getFullYear()
+
+	$("#datepicker").datepicker({ 
+		minDate: new Date(ano, mes, dia)
+		dateFormat: 'yy-mm-dd'
+		onSelect: function(dateText) { 
+			$('#hour_picker').show();
+			$('#datepicker').hide();
+			findHours(dateText);
+			$("th.selected_date").append("Data escolhida:" + " " + (dateText));
+			pageNo = '2';
+			 }
+		});
+});
+
+
+
+

@@ -2,6 +2,7 @@
 
 /* mixins e variaveis */
 $grayMediumLight: #eaeaea;
+$grayLight: #999;
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
@@ -58,8 +59,8 @@ h2 {
 }
 
 p {
-	font-size: 1.1em;
-	line-height: 1.7em;
+//	font-size: 1.1em;
+//	line-height: 1.7em;
 }
 
 /* header */
@@ -94,7 +95,7 @@ footer a {
 }
 
 footer a:hover {
-	color: $grayDarker;
+	color: $gray-darker;
 }
 
 footer small {
@@ -132,7 +133,7 @@ footer ul li {
 aside {
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid $gray-lighter;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -142,13 +143,13 @@ aside {
       margin-bottom: 3px;
       line-height: 1;
     }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
+    // // h1 {
+    //   font-size: 1.4em;
+    //   text-align: left;
+    //   letter-spacing: -1px;
+    //   margin-bottom: 3px;
+    //   margin-top: 0px;
+    // }
   }
 }
 
@@ -167,18 +168,18 @@ aside {
 }
 
 
-/* forms */
-input, textarea, select, .uneditable-input {
-	border: 1px solid #bbb;
-	width: 100%;
-	margin-bottom: 15px;
-	@include box_sizing;
-}
-input {
-	height: auto !important;
-}
+// /* forms 
+// input, textarea, select, .uneditable-input {
+// 	border: 1px solid #bbb;
+// 	width: 100%;
+// 	margin-bottom: 15px;
+// 	@include box_sizing;
+// }
+// input {
+// 	height: auto !important;
+// }
 
-/* mensagens de erro */
+// /* mensagens de erro 
 #error_explanation {
 	color: #f00;
 	ul {

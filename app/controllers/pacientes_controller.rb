@@ -17,6 +17,10 @@ class PacientesController < ApplicationController
 		params.require(:paciente).permit(:nome)
 	end
 
+	def index
+		@pacientes=Paciente.all()
+	end
+
 end
 
 

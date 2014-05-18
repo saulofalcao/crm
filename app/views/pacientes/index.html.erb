@@ -1,4 +1,34 @@
-<form id="live-search" method="get" action="<%= search_path %>">
-	<input id="big-search-box" name="q" type="text" />
-</form>
-<div id="live-search-results"></div>
+<!-- <div class="container"> -->
+<h1>Pacientes</h1>
+
+
+
+  <%= link_to 'Novo Paciente', new_paciente_path, class: "btn btn-medium btn-default" %>
+<br>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pacientes.each do |paciente| %>
+      <tr>
+        <td><%= link_to paciente.nome, paciente %></td>
+        <!-- <td><%= link_to 'Exibir', paciente %></td> -->
+        <td><%= link_to 'Novo Agendamento', new_agendamento_path %></td>
+        <td><%= link_to 'Editar', edit_paciente_path(paciente) %></td>
+        <td><%= link_to 'Excluir', paciente, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- </div> -->
+
+
+
