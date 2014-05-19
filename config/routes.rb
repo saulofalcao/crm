@@ -11,7 +11,9 @@ ControleDeEstoque::Application.routes.draw do
   match '/ajuda',    to: 'static_pages#ajuda',    via: 'get'
   match '/sobre',   to: 'static_pages#sobre',   via: 'get'
   match '/contato', to: 'static_pages#contato', via: 'get'
-  match '/agendamentos/seleciona_horarios', to: 'agendamentos#seleciona_horarios', via: 'get'
+ match '/agendamentos/seleciona_horarios', to: 'agendamentos#seleciona_horarios', via: 'get'
+  match '/agendamentos/seleciona_horarios2', to: 'agendamentos#seleciona_horarios2', via: 'get'
+  match '/seleciona_medico', to: 'medicos#seleciona_medico', via: 'get'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

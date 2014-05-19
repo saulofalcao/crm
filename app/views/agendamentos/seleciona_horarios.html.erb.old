@@ -1,0 +1,9 @@
+<h1>Escolha um horário</h1>
+<div class="form-group form-horizontal">
+
+	<label class="col-md-2 control-label">Paciente:</label>
+	<p class="form-control-static">João da Silva</p>
+	<label class="col-md-2 control-label">Médico:</label>
+	<p class="form-control-static">Alessandro Costa</p>
+</div>
+	

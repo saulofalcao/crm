@@ -1,0 +1,9 @@
+<%= form_for(@agendamento) do |f| %> 
+
+<%= f.label :Paciente, "Paciente" %> 
+	<%= f.text_field :paciente, disabled: true, placeholder: "João da Silva" %> 
+	
+	<%= f.label :Medico, "Medico" %>
+
+	<%= f.submit "Criar Agendamento", :class =>"btn btn-medium btn-primary" %>
+	<% end %>

@@ -21,7 +21,7 @@
       <tr>
         <td><%= link_to paciente.nome, paciente %></td>
         <!-- <td><%= link_to 'Exibir', paciente %></td> -->
-        <td><%= link_to 'Novo Agendamento', new_agendamento_path %></td>
+        <td><%= link_to 'Novo Agendamento', controller: "medicos", action: 'seleciona_medico', paciente_id: paciente.id, paciente_nome: paciente.nome %></td>
         <td><%= link_to 'Editar', edit_paciente_path(paciente) %></td>
         <td><%= link_to 'Excluir', paciente, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>

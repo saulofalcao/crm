@@ -1,8 +1,4 @@
-<% provide(:title, "Novo Agendamento") %>
-<p><%= @paciente.nome %></p>
-<p><%= @medico.nome %></p>
-
-<div id='datepicker'></div>
+<div id="datepicker"></div>
 <div id='hour_picker'>
 	<table border="1">
 		<tr>
@@ -55,26 +51,20 @@
 </div>
 
 <div id="cal_previous2"><button class="btn" onclick='prevPage();'>voltar</button></div><br />
-<div id="agendamento_form">
+<div id="appointment_form">
 <%= form_tag("/agendamentos", method: "post") do %>
 <br />
-<label for="agendamentos_data">data agendada</label><br /><br />
+<label for="appointments_date">data agendada</label><br /><br />
 <div id="final_date"><h2></h2></div>
 
-<input id="agendamentos_data" name="agendamentos[data]" type="hidden" />
+<input id="schedules_date" name="agendamentos[data]" type="hidden" />
 <br />
 <br />
 
 <label for="agendamentos_hora">hora agendada</label><br /><br />
-
 <div id="final_hour"><h2></h2></div>
 
 <input id="agendamentos_hora" name="agendamentos[hora]" type="hidden" />
-<input id="agendamentos_paciente_id" name="agendamentos[paciente_id]" value=<%= @paciente.id %> type="hidden" />
-<input id="agendamentos_medico_id" name="agendamentos[medico_id]" value=<%= @medico.id %> type="hidden" />
-
-
-
 <br />
 <br />
 
@@ -85,7 +75,5 @@
 </div>
 
 <div id="hidden_hour_div"></div>
-<script src="/assets/appointments.js"></script>
 
-
-
+<script src="/assets/appointment.js"></script>
