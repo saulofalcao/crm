@@ -62,6 +62,7 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.4)
+    growl (1.0.3)
     guard (2.2.4)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -85,8 +86,6 @@ GEM
     jquery-ui-rails (4.2.1)
       railties (>= 3.2.16)
     json (1.8.1)
-    libnotify (0.8.0)
-      ffi (>= 1.0.11)
     listen (2.4.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -209,12 +208,12 @@ DEPENDENCIES
   childprocess (= 0.3.9)
   coffee-rails (= 4.0.1)
   factory_girl_rails (= 1.4.0)
+  growl
   guard-rspec (= 2.5.0)
   guard-spork (= 1.5.0)
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
   jquery-ui-rails (= 4.2.1)
-  libnotify
   listen
   pg (= 0.15.1)
   rails (= 4.0.1)

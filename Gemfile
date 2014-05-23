@@ -19,15 +19,14 @@ group :development, :test do
     gem 'guard-spork', '1.5.0'
     gem 'childprocess', '0.3.9'
     gem 'listen'
-    gem 'libnotify'
+    gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
+    gem 'growl' if /darwin/ =~ RUBY_PLATFORM
 end
 
 group :test do
     gem 'selenium-webdriver', '2.35.1'
     gem 'capybara','2.1.0'
     #gem 'rb-inotify', '0.9.2'
-    # gem 'libnotify', '0.5.9'
-#    gem 'libnotify', '0.8.0'
     gem 'factory_girl_rails', '1.4.0'
 end
 
