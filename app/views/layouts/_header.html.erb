@@ -9,6 +9,7 @@
 				<li><%= link_to "Início", root_path %> </li>
 				
 				<% if signed_in? %>
+				<li><%= link_to("Agendamentos", agendamentos_path) %></li>
 				<li><%= link_to("Usuários", '#') %></li>
 				<li><%= link_to("Médicos", medicos_path) %></li>
 				<li><%= link_to("Pacientes", pacientes_path) %></li>

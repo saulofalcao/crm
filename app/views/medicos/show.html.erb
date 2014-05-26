@@ -1,0 +1,15 @@
+<% provide(:title, @medico.nome) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+    	<h1>
+        	<% ## gravatar_for @medico.nome %>
+        	<%= @medico.nome %>
+      	</h1>
+      	<%= link_to "Novo Agendamento", new_agendamento_path, class: "btn btn-primary" %>
+
+
+
+    </section>
+  </aside>
+</div>

@@ -1,0 +1,6 @@
+<%= bootstrap_form_for @medico, layout: :horizontal do |f| %>
+	<%= f.text_field :nome, label: "Nome do Médico" %>
+	<%= f.form_group do %>
+		<%= f.submit "Cadastrar Médico", :class =>"btn btn-medium btn-primary" %>
+	<% end %>
+<% end %>

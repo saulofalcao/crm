@@ -1,0 +1,34 @@
+<!-- <div class="container"> -->
+<h1>Médicos</h1>
+
+
+
+  <%= link_to 'Cadastrar Médico', new_medico_path, class: "btn btn-medium btn-primary" %>
+<br>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medicos.each do |medico| %>
+      <tr>
+        <td><%= link_to medico.nome, medico %></td>
+        <!-- <td><%= link_to 'Exibir', medico %></td> -->
+        <td><%= link_to 'Novo Agendamento', controller: "medicos", action: 'seleciona_medico', paciente_id: medico.id, paciente_nome: medico.nome %></td>
+        <td><%= link_to 'Editar', edit_medico_path(medico) %></td>
+        <td><%= link_to 'Excluir', medico, method: :delete, data: { confirm: 'Tem certeza que deseja excluir o médico #{medico.nome}?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- </div> -->
+
+
+ 

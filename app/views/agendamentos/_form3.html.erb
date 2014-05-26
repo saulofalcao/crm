@@ -1,0 +1,46 @@
+<!--<%= form_for(@agendamento) do |f| %> 
+
+	<!-- <%= f.label :Paciente, "Paciente" %> -->
+	<!-- <%= f.text_field :paciente, disabled: true, placeholder: "João da Silva" %>  -->
+	<!-- # cookies[:nome_paciente] %> -->
+	<!-- <%= f.label :Medico, "Medico" %> -->
+
+	<!-- <%= f.submit "Criar Agendamento", :class =>"btn btn-medium btn-primary" %> -->
+	<!-- <% end %> -->
+
+
+
+	<% content_for :head do %>
+	<script type="text/javascript">
+		<%= render partial: "calendar_jquery" %>
+	</script>
+	<% end %>
+
+	<div class="container">
+		<form method="get" class="form-horizontal" role="form" action="/agendamentos/seleciona_horarios">
+			<%= hidden_field_tag :authenticiy_token, form_authenticity_token %>
+			<div class="form-group">
+				<label class="control-label col-md-2">Paciente:</label>
+				<div class="col-md-10">
+					<p class="form-control-static">João da Silva</p>
+				</div>
+				
+				<label class="control-label col-md-2">Médico:</label>
+				<div class="col-md-10">
+					<select class="form-control" name="medico" required>
+						<option>--- Selecione um médico --</option>
+						<option>Alessandro Costa</option>
+						<option>Marcelo Souza</option>
+						<option>Pedro Alves</option>
+						<option>Renato Alcântara</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-10 col-md-offset-2"> 
+
+					<button type="submit" class="btn btn-primary">Avançar</button>
+				</div> 
+			</div>
+		</form>
+	</div>

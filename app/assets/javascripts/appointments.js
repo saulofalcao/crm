@@ -48,7 +48,7 @@ $(function () {
 
 function findHours(chosen_date){
  $.ajax({
-      url: "/../agendamentos",
+      url: "/../agendamentos/lista_agendamentos_ajax",
       cache: false,
       data: {matched_date:chosen_date},
       success: function(html){

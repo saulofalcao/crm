@@ -1,16 +1,27 @@
 class AgendamentosController < ApplicationController
-	def index
+	def lista_agendamentos_ajax
 		date_from_ajax = params[:matched_date]
 		reduce = Agendamento.where(:data => date_from_ajax)
-		hour_on_date = reduce.collect {|x| x.hour}
+		hour_on_date = reduce.collect {|x| x.hora}
 		@new_dates = hour_on_date
 		render :layout => false
 	end
 
-	def new
-		
+	def index
+		# date_from_ajax = params[:matched_date]
+		# reduce = Agendamento.where(:data => date_from_ajax)
+		# hour_on_date = reduce.collect {|x| x.hour}
+		# @new_dates = hour_on_date
+		# render :layout => false
 
-		@agendamentos = Agendamento.create
+
+	end
+
+
+	def new
+		#@agendamento = Agendamento.create
+		
+		@agendamento = Agendamento.new
 		respond_to do |format|
 			format.html
 			format.js
