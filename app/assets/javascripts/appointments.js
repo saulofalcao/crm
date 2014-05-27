@@ -47,25 +47,36 @@ $(function () {
 });
 
 function findHours(chosen_date){
+  var medico_id = $.cookie("medico_id");
+  if (jQuery) {
+    console.log("tem jquery");
+  }
+  console.log("medico_id: " + medico_id);
  $.ajax({
       url: "/../agendamentos/lista_agendamentos_ajax",
       cache: false,
-      data: {matched_date:chosen_date},
+      data: {matched_date:chosen_date,medico_id:medico_id},
+      // data: {matched_date:chosen_date},
       success: function(html){
         var hours_array = [];
         $("#hidden_hour_div").append(html);
-        var hours_string = $("#hidden_hour_div").html()
+        var hours_string = $("#hidden_hour_div").html();
+        console.log(hours_string);
         var one = hours_string.substring(2, 6);
         var two = hours_string.substring(10, 14);
         var three = hours_string.substring(18, 22);
         var four = hours_string.substring(26, 30);
         var five = hours_string.substring(34, 38);
         var six = hours_string.substring(42, 46);
-        
+        console.log("one: " + one);
+        console.log("hours_array: " + hours_array);
         hours_array.push(one,two,three,four,five,six);
+        console.log("hours_array de novo: " + hours_array);
         for (var j in hours_array) {
+          // (final_array = '\.'+ hours_array[j]);
           (final_array = '\.'+ hours_array[j]);
           $(final_array).hide();
+          console.log("final_array: " + final_array);
      }
     }
   });

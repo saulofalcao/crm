@@ -18,3 +18,4 @@
 //= require live_search
 //= require jquery.ui.datepicker
 //= require jquery.validate.min
+//= require jquery.cookie

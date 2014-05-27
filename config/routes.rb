@@ -14,7 +14,7 @@
   match '/agendamentos/seleciona_horarios', to: 'agendamentos#seleciona_horarios', via: 'get'
   match '/agendamentos/seleciona_horarios2', to: 'agendamentos#seleciona_horarios2', via: 'get'
   match '/seleciona_medico', to: 'medicos#seleciona_medico', via: 'get'
-  match '/lista_agendamentos_ajax', to: 'agendamentos#lista_agendamentos_ajax', via: 'get'
+  match '/agendamentos/lista_agendamentos_ajax', to: 'agendamentos#lista_agendamentos_ajax', via: 'get'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

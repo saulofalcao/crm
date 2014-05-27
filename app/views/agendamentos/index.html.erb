@@ -1,1 +1,39 @@
-<%= @new_dates %>
+<%#= @new_dates %>
+<!-- <div class="container"> -->
+<h1>Agendamentos</h1>
+
+
+
+  <%#= link_to 'Cadastrar Médico', new_medico_path, class: "btn btn-medium btn-primary" %>
+<br>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome do Paciente</th>
+      <th>Médico</th>
+      <th>Data</th>
+      <th>Hora</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @agendamentos.each do |agendamento| %>
+      <tr>
+        <td><%= agendamento.paciente_nome %></td>
+        <!-- <td><%#= link_to 'Exibir', agendamento %></td> -->
+        <!-- <td><%#= link_to 'Novo Agendamento', controller: "medicos", action: 'seleciona_medico', paciente_id: agendamento.id, paciente_nome: agendamento.nome %></td> -->
+        <!-- <td><%#= link_to 'Novo Agendamento', controller: "agendamentos", action: "new", medico_id: agendamento.id  %></td> -->
+        <!-- <td><%#= link_to 'Editar', edit_medico_path(agendamento) %></td> -->
+        <!-- <td><%#= link_to 'Excluir', agendamento, method: :delete, data: { confirm: 'Tem certeza que deseja excluir o médico #{agendamento.nome}?' } %></td> -->
+        <td><%= agendamento.medico_id %></td>
+        <td><%= agendamento.data %></td>
+        <td><%= agendamento.hora %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- </div> -->
+
+
+ 

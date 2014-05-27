@@ -45,7 +45,7 @@
 		</tr>
 
 		<tr class="cal_table3">
-			<td class='cal_previous'><form method='link' action="/agendamentos/new">
+			<td class='cal_previous'><form method='link' action="/agendamentos/new?medico_id=<%=@medico.id%>">
 				<button class="btn">Voltar</button>
 			</form>
 		</td>
@@ -69,15 +69,16 @@
 <div id="final_hour"><h2></h2></div>
 
 <input id="agendamentos_hora" name="agendamentos[hora]" type="hidden" />
-<!-- <input id="agendamentos_paciente_id" name="agendamentos[paciente_id]" value=<%= @paciente.id %> type="hidden" /> -->
+<!-- <input id="agendamentos_paciente_id" name="agendamentos[paciente_id]" value=<%#= @paciente.id %> type="hidden" /> -->
 <input id="agendamentos_medico_id" name="agendamentos[medico_id]" value=<%= @medico.id %> type="hidden" />
 
 
 
 <br />
 <br />
+<input type="text" id="agendamentos_paciente_nome" name="agendamentos[paciente_nome]" class="form-control" />
+<input type="submit" name="btn" value="Submit" class="btn" id="subData" style="display: 'none;'">
 
-<input type="submit" name="btn" value="Submit" class="btn" id="subData" style="display:none;">
 
 <%= submit_tag("Submit") %>
 <% end %>

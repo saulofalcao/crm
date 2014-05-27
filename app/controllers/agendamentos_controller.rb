@@ -1,7 +1,9 @@
 class AgendamentosController < ApplicationController
 	def lista_agendamentos_ajax
 		date_from_ajax = params[:matched_date]
-		reduce = Agendamento.where(:data => date_from_ajax)
+		medico_from_ajax = params[:medico_id]
+		# reduce = Agendamento.where(:data => date_from_ajax)
+		reduce = Agendamento.where(data: date_from_ajax, medico_id: medico_from_ajax)
 		hour_on_date = reduce.collect {|x| x.hora}
 		@new_dates = hour_on_date
 		render :layout => false
@@ -13,14 +15,22 @@ class AgendamentosController < ApplicationController
 		# hour_on_date = reduce.collect {|x| x.hour}
 		# @new_dates = hour_on_date
 		# render :layout => false
-
+		@agendamentos = Agendamento.all
 
 	end
 
 
+
+
 	def new
 		#@agendamento = Agendamento.create
-		
+		if params[:medico_id]
+			@medico = Medico.find(params[:medico_id])
+			cookies[:medico_id]=@medico.id
+		else
+			@medico=Medico.find(cookies[:medico_id])	
+			#@medico=cookies[:medico_id]
+		end
 		@agendamento = Agendamento.new
 		respond_to do |format|
 			format.html
@@ -47,7 +57,7 @@ class AgendamentosController < ApplicationController
 	end
 
 	def agendamentos_params
-		params.require(:agendamentos).permit(:data, :hora, :medico_id, :paciente_id)
+		params.require(:agendamentos).permit(:data, :hora, :medico_id, :paciente_nome)
 	end
 
 

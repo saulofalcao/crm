@@ -22,7 +22,7 @@ class Agendamento < ActiveRecord::Base
 							presence: true
 	 validates :hora, 
 				presence: true,
-				uniqueness: {scope: :data}
+				uniqueness: {scope: [:data, :medico_id] }
 
 
 
