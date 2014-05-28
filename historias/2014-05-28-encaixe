@@ -1,0 +1,38 @@
+branch - 28/05/2014
+licao
+objetivo: criar conceito de encaixe.
+Com a marcação de agendamentos funcionando de forma básica, mesmo sem um belo layout, fazer o conceito do encaixe
+Estória: A secretária, após receber a ligação de um paciente informando que ele não vai poder mais comparecer a uma consulta, entra no sistema e desmarca aquele paciente. Ela marca aquele horário como disponível para encaixe. O sistema envia uma mensagem para o primeiro paciente da fila de atendimento e demonstrou interesse em encaixe antes (a fila se dá por ordem de quem marcou primeiro). Essa mensagem contem um telefone com um codigo para encaixe. A secretária pega esse codigo e digita no modulo de encaixe. O sistema mostra na tela que esse código vai marcar o paciente "Fulano de Tal", que estava na data e horário "Tal", para a data e horário "tal". Pede para ela confirmar e ela faz isso.
+Ela avisa ao paciente por telefone e um e-mail e uma mensagem de celular são enviadas para ele.
+O horário anterior, que estava marcado com o paciente, fica livre e, se for de 3 dias para a frente, não será objeto de novo encaixe. Se for de 3 dias para hoje, será objeto de novo encaixe.
+
+- O novo horário, que foi resultado da desmarcação do paciente Fulano de tal do seu horario original fica assim liberado para uma nova consulta? nao. ver abaixo
+- O novo horário fica liberado para um novo encaixe? Sim, exceto se o horário for de d + 3
+
+
+
+-----
+Alterações no algoritmo atual
+- incluir campo telefone no nome do paciente
+- incluir e-mail no campo do paciente
+
+Teremos um objeto agendamento.
+O agendamento faz a remarcacao
+
+Secretária seleciona horário na tela para remarcar. Quando ela clica:
+horario=Agendamento.find(id)
+horario.remarca()
+esse remarca()
+
+tela 1:
+/agendamentos
+2:
+/agendamentos/remarca?paciente_nome=Fulano+de+Tal&tel=84+88092128
+
+
+horario=a.desmarca()
+horario.liberado_para_encaixe?
+horario.faz_encaixe()
+
+a.marca()
+
