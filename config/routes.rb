@@ -1,5 +1,9 @@
  ControleDeEstoque::Application.routes.draw do
 
+  # get "clientes/new"
+  # get "clientes/create"
+  # get "clientes/destroy"
+  # get "clientes/edit"
   #get "transacoes/lista"
   #get "transacoes/nova"
   #get "transacoes/edita"
@@ -21,6 +25,7 @@
   resources :agendamentos
   resources :pacientes
   resources :medicos
+  resources :clientes
   #resources :professors
   #resources :aulas
   #resources :reservas
