@@ -1,4 +1,4 @@
-ActiveAdmin.register TipoServico do
+ActiveAdmin.register ServicoTipoServico do
 
   
   # See permitted parameters documentation:
@@ -13,9 +13,5 @@ ActiveAdmin.register TipoServico do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :tipo_servico
   
-
-
-
 end

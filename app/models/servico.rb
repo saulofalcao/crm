@@ -12,4 +12,6 @@
 
 class Servico < ActiveRecord::Base
 	belongs_to :cliente
+	has_many :servico_tipo_servico
+	has_many :tipo_servicos, through: :servico_tipo_servico
 end

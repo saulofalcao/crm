@@ -62,5 +62,4 @@ ActiveAdmin.register Cliente do
     link_to cliente.nome, admin_cliente_path(cliente)
   end
 
-
 end
