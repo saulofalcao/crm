@@ -10,6 +10,6 @@
 
 class TipoServico < ActiveRecord::Base
 	# has_many :servicos, through: :servico_tipo_servicos
-	has_many :servicos, through: :tipo_servico_executados
+	# has_many :servicos, through: :tipo_servico_executados
 
 end
