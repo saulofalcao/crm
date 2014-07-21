@@ -1,4 +1,4 @@
-ActiveAdmin.register TipoServico do
+ActiveAdmin.register ActiveAdmin::Comment do
 
   
   # See permitted parameters documentation:
@@ -13,9 +13,6 @@ ActiveAdmin.register TipoServico do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :nome
+  # actions :all, :except => :show
   
-
-
-
 end
