@@ -1,0 +1,24 @@
+<%= bootstrap_form_for(@cliente) do |f| %>
+	<% if @cliente.errors.any? %>
+		<div id="error_explanation">
+			<div class="alert alert-danger">
+				<%= pluralize(@cliente.errors.count, "erro")%> não <%= "permitiu".pluralize(@cliente.errors.count) %> que este cliente fosse atualizado
+			</div>
+
+			<ul>
+			<% @cliente.errors.full_messages.each do |msg| %>
+				<li>* <%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<%= f.text_field :nome %>
+	<%= f.text_field :endereco, label: "Endereço" %>
+	<%= f.text_field :orcamento, label: "Orçamento" %>
+	<%= f.text_field :servico_id, label: "Serviço" %>
+	<%= f.submit %>
+<% end %>
+
+
+

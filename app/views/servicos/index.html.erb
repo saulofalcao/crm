@@ -1,0 +1,33 @@
+<h1>Serviços</h1>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+
+    	<%= button_to 'Cadastrar Serviço', new_servico_path, class: "btn btn-large", method: 'get' %>
+
+ 	     <!-- <button class="btn btn-large">Novo servico</button> -->
+    </section>
+  </aside>
+</div>
+
+<table class="table table-hover">
+	<thead>
+		<th>Cliente</th>
+		<th>Endereço</th>
+		<th>Orçamento</th>
+		<th>Tipo de Serviço</th>
+	</thead>
+
+	<tbody>
+		<% @servicos.each do |c| %>
+		<td><%= c.nome %></td>
+		<td><%= c.endereco %></td>
+		<td><%= c.orcamento %></td>
+		<td><%= c.servico_id %></td>
+		<td><%= link_to "Editar", edit_servico_path(c.id) %></td>
+
+	</tbody>
+	<% end %>
+
+</table>

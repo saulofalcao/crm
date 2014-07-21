@@ -49,13 +49,22 @@ ActiveAdmin.register Servico do
 
   form do |f|
     f.inputs do
+
       # f.input :cliente_id, :label => 'Cliente', :as => :select, :collection => Cliente.all.map{|c| ["#{c.nome}", c.id]}
       f.input :valor_orcamento, label: 'Valor Orçamento', as: :string
-      f.has_many :tipo_servico_executados do |tse|
-        # tse.input :tipo_servico_executado, label: 'Tipo de Serviço', as: :check_boxes, collection: TipoServico.all.map{ |t| ["#{t.nome}", t.id]}
-        tse.input :tipo_servico, label: "Tipo de Serviço", collection: TipoServico.all.map { |ts| [ "#{ts.nome}", ts.id]}
-        tse.input :_destroy, :as=>:boolean, :required => false, :label=>'Remover'
+
+      if f.object.new_record?
+        f.has_many :tipo_servico_executados do |tse|
+          tse.input :tipo_servico, label: "Tipo de Serviço", collection: TipoServico.all.map { |ts| [ "#{ts.nome}", ts.id]}
+          # tse.input :_destroy, :as=>:boolean, :required => false, :label=>'Remover' 
+        end
+      else
+        f.has_many :tipo_servico_executados do |tse|
+          tse.input :tipo_servico, label: "Tipo de Serviço", collection: TipoServico.all.map { |ts| [ "#{ts.nome}", ts.id]}
+          tse.input :_destroy, :as=>:boolean, :required => false, :label=>'Remover'
+        end
       end
+
       f.input :observacao, label: 'Observação'
     end
     f.actions

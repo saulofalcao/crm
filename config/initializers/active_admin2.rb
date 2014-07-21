@@ -15,7 +15,7 @@ module ActiveAdmin
             div :style => "clear:both;"
             div link_to "Editar", "/admin/active_admin_comments/#{comment.id}/edit"
             # div link_to "Remover", active_admin_comments"/admin/active_admin_comments/#{comment.id}/edit"
-            div link_to 'Destroy', "/admin/active_admin_comments/#{comment.id}", :confirm => 'Tem certeza que deseja apagar o comentário?', :method => :delete
+            div link_to 'Remover', "/admin/active_admin_comments/#{comment.id}", :confirm => 'Tem certeza que deseja apagar o comentário?', :method => :delete
           end
         end
       end
