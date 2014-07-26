@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721203032) do
+ActiveRecord::Schema.define(version: 20140726133431) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -135,6 +135,15 @@ ActiveRecord::Schema.define(version: 20140721203032) do
     t.float    "valor_orcamento"
     t.integer  "cliente_id"
     t.text     "observacao"
+  end
+
+  create_table "tarefas", force: true do |t|
+    t.datetime "vencimento"
+    t.string   "titulo"
+    t.integer  "tarefavel_id"
+    t.string   "tarefavel_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tipo_servico_executados", force: true do |t|

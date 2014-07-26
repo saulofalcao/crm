@@ -18,4 +18,8 @@ class Servico < ActiveRecord::Base
 	has_many :tipo_servicos, through: :tipo_servico_executados
 	accepts_nested_attributes_for :tipo_servico_executados, allow_destroy: true
 	accepts_nested_attributes_for :tipo_servicos, allow_destroy: true
+
+	# tarefas
+	has_many :tarefas, as: :tarefavel
+	accepts_nested_attributes_for :tarefas
 end

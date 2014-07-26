@@ -1,6 +1,7 @@
 ActiveAdmin.register Servico do
 
-  
+  ActiveAdmin.register Tarefa do
+  end
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -17,6 +18,7 @@ ActiveAdmin.register Servico do
   # belongs_to  :cliente
   # navigation_menu :cliente
 
+# Começo Show
   show do
     attributes_table do
       row "Valor do Orçamento" do |s|
@@ -35,18 +37,43 @@ ActiveAdmin.register Servico do
           end
         end
       end
+      # panel "Tarefas" do
+      #   table_for servico.tarefas do
+      #     column "Tarefa" do |tarefa|
+      #       tarefa.titulo
+      #     end
+      #     column "Data" do |tarefa|
+      #       data=tarefa.vencimento
+      #       data.strftime("%d/%m/%Y")
+      #     end
+      #   end
+      # end
+
     end
     
     active_admin_comments
 
   end
-#         tipo_servico.tipo_servico.tipo_servico
-#         # column tipo_de_servico.tipo_servico
-        # end
-#       column :tipo_servico
-        
-   
+#  Fim Show
 
+
+# Começo Sidebar
+  sidebar "Tarefas", only: [:show] do
+    ul do
+      table_for servico.tarefas do
+          column "Tarefa" do |tarefa|
+            tarefa.titulo
+          end
+          column "Data" do |tarefa|
+            data=tarefa.vencimento
+            data.strftime("%d/%m/%Y")
+          end
+        end
+      end
+  end
+# Fim Sidebar
+
+# começo Form
   form do |f|
     f.inputs do
 
@@ -69,6 +96,8 @@ ActiveAdmin.register Servico do
     end
     f.actions
   end
-
+# Fim Form
 
 end
+
+
