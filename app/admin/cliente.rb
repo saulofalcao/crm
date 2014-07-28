@@ -1,8 +1,8 @@
 ActiveAdmin.register Cliente do
-  ActiveAdmin.register Servico do
-    belongs_to  :cliente
+  # ActiveAdmin.register Servico do
+  #   belongs_to  :cliente
 
-  end
+  # end
 action_item only: [:show] do |cliente|
         link_to "Novo Serviço", new_admin_cliente_servico_path(params[:id])
       end

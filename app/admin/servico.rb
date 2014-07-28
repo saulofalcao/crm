@@ -1,7 +1,7 @@
 ActiveAdmin.register Servico do
-
-  ActiveAdmin.register Tarefa do
-  end
+  belongs_to  :cliente
+  # ActiveAdmin.register Tarefa do
+  # end
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -77,9 +77,6 @@ ActiveAdmin.register Servico do
   form do |f|
     f.inputs do
 
-      # f.input :cliente_id, :label => 'Cliente', :as => :select, :collection => Cliente.all.map{|c| ["#{c.nome}", c.id]}
-      f.input :valor_orcamento, label: 'Valor Orçamento', as: :string
-
       if f.object.new_record?
         f.has_many :tipo_servico_executados do |tse|
           tse.input :tipo_servico, label: "Tipo de Serviço", collection: TipoServico.all.map { |ts| [ "#{ts.nome}", ts.id]}
@@ -92,7 +89,15 @@ ActiveAdmin.register Servico do
         end
       end
 
+      f.input :valor_orcamento, label: 'Valor Orçamento', as: :string
+
       f.input :observacao, label: 'Observação'
+
+      # if f.object.new_record?
+        # f.has_many :tarefas do |tarefa|
+          # tarefa.input :tarefa, label: "Tarefa"
+        # end
+      # end
     end
     f.actions
   end
