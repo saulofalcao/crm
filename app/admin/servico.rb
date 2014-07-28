@@ -1,5 +1,5 @@
-ActiveAdmin.register Servico do
-  belongs_to  :cliente
+ActiveAdmin.register Servico  do
+  # belongs_to  :cliente
   # ActiveAdmin.register Tarefa do
   # end
   # See permitted parameters documentation:

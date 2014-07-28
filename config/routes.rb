@@ -1,4 +1,8 @@
  ControleDeEstoque::Application.routes.draw do
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   namespace :admin do
     resources :clientes do
       resources :servicos do
@@ -6,8 +10,7 @@
       end
     end
   end
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+
   # get "clientes/new"
   # get "clientes/create"
   # get "clientes/destroy"
