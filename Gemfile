@@ -43,6 +43,7 @@ gem 'appointments', '1.3.3'
 # gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
 gem 'activeadmin', git: 'https://github.com/bamorim/active_admin.git', branch: '3274-adding-nested-belongs-to'
 gem 'devise'
+gem 'jquery-turbolinks'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

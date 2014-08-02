@@ -3,9 +3,40 @@ ActiveAdmin.register Cliente do
   #   belongs_to  :cliente
 
   # end
-action_item only: [:show] do |cliente|
-        link_to "Novo Serviço", new_admin_cliente_servico_path(params[:id])
+# collection_action :import_csv, method: :get do
+#       # Do some CSV importing work here...
+#   redirect_to collection_path, notice: "CSV imported successfully!"
+# end
+
+  # Começo Sidebar
+  sidebar "Tarefas", only: [:show] do
+    ul do
+      table_for cliente.tarefas do
+        column "Tarefa" do |tarefa|
+          tarefa.titulo
+        end
+        column "Data" do |tarefa|
+          data=tarefa.vencimento
+          data.strftime("%d/%m/%Y")
+        end
       end
+      li link_to "Nova Tarefa", new_admin_cliente_tarefa_path(params[:id])
+    end
+  end
+  # Fim Sidebar
+
+
+  # scope :all
+  # scope :pending
+
+  # controller do
+  #   def import_csv
+  #     render 'tarefas'
+  #   end
+  # end
+  action_item only: [:show] do |cliente|
+    link_to "Novo Serviço", new_admin_cliente_servico_path(params[:id])
+  end
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

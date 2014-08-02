@@ -16,4 +16,7 @@
 
 class Cliente < ActiveRecord::Base
 	has_many :servicos
+	has_many :tarefas
+	# scope :pending, where(id: "%")
+
 end

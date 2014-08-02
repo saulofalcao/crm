@@ -57,21 +57,7 @@ ActiveAdmin.register Servico  do
 #  Fim Show
 
 
-# Começo Sidebar
-  sidebar "Tarefas", only: [:show] do
-    ul do
-      table_for servico.tarefas do
-          column "Tarefa" do |tarefa|
-            tarefa.titulo
-          end
-          column "Data" do |tarefa|
-            data=tarefa.vencimento
-            data.strftime("%d/%m/%Y")
-          end
-        end
-      end
-  end
-# Fim Sidebar
+
 
 # começo Form
   form do |f|
