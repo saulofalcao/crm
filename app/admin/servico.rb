@@ -24,7 +24,9 @@ ActiveAdmin.register Servico  do
       row "Valor do Orçamento" do |s|
         s.valor_orcamento
       end
-      row :observacao, label: "Observação"
+      row "Observação" do |s|
+        s.observacao
+      end
       panel "Servicos Executados" do
 
         table_for servico.tipo_servico_executados, label: "Serviçaasdos Executados" do

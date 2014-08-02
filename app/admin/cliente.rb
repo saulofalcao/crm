@@ -50,7 +50,7 @@ ActiveAdmin.register Cliente do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :nome, :email, :rua, :numero, :complemento, :bairro, :cep, :observacao
+  permit_params :nome, :email, :rua, :complemento, :bairro, :cep, :observacao
   #has_many :servicos
 
   form do |f|
@@ -58,7 +58,6 @@ ActiveAdmin.register Cliente do
        f.input :nome
        f.input :email, label: "E-mail"
        f.input :rua
-       f.input :numero, label: "Número"
        f.input :complemento
        f.input :bairro
        f.input :cep
@@ -91,7 +90,6 @@ ActiveAdmin.register Cliente do
       link_to cliente.email, admin_cliente_path(cliente)
     end
     column :rua
-    column :numero
     column :bairro
     actions
     # link_to "Novo Serviço", new_admin_cliente_servico_path(cliente.nome)
@@ -102,5 +100,40 @@ ActiveAdmin.register Cliente do
     # link_to image_tag(product.image_path), admin_product_path(product)
     link_to cliente.nome, admin_cliente_path(cliente)
   end
+
+
+  # show do
+  #   h3 cliente.nome
+  # end
+  show title: :nome do
+      attributes_table do
+        row "Nome" do 
+          cliente.nome
+        end
+        row "Telefone" do
+          cliente.telefone
+        end
+        row "E-mail" do
+          cliente.email
+        end
+        row "Endereço" do
+          cliente.endereco
+        end
+        row "Complemento" do
+          cliente.complemento
+        end
+        row "Bairro" do
+          cliente.bairro
+        end
+        row "CEP" do
+          cliente.cep
+        end
+        row "Observação" do
+          cliente.observacao
+        end
+      end
+    active_admin_comments
+  end
+
 
 end

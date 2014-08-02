@@ -7,7 +7,7 @@
 #  updated_at      :datetime
 #  valor_orcamento :float
 #  cliente_id      :integer
-#  tipo_servico_id :integer
+#  observacao      :text
 #
 
 class Servico < ActiveRecord::Base

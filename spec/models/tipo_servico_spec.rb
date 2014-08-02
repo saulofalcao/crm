@@ -2,10 +2,10 @@
 #
 # Table name: tipo_servicos
 #
-#  id           :integer         not null, primary key
-#  tipo_servico :string(255)
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id         :integer         not null, primary key
+#  nome       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 require 'spec_helper'
