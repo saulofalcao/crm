@@ -26,7 +26,7 @@ ActiveAdmin.register_page "Dashboard" do
 
             column do
                 panel "Tarefas adicionadas recentemente" do
-                    table_for Tarefa.order("vencimento").limit(5) do  
+                    table_for tarefas_recentes do  
                         column "Vencimento", :vencimento  
                         column "Tarefa", :titulo  
                     end  

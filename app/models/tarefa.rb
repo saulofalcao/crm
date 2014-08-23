@@ -16,4 +16,9 @@
 class Tarefa < ActiveRecord::Base
 	# belongs_to :tarefavel, polymorphic: true
 	belongs_to :cliente
+
+	private
+	def after_find
+		self.vencimento = vencimento.strftime("%d-%m-%Y")
+	end
 end
