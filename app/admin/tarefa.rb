@@ -15,4 +15,6 @@ ActiveAdmin.register Tarefa do
   #  permitted
   # end
   permit_params :vencimento, :titulo
+
+  
 end

@@ -12,14 +12,25 @@ ActiveAdmin.register_page "Dashboard" do
         
         columns do
             column do
-                panel "Tarefas Recentes" do
-                    section "Tarefas Recentes" do  
-                        table_for Tarefa.order("vencimento").limit(5) do  
-                            column :titulo  
-                            column :vencimento  
-                        end  
-                        # strong { link_to "Ver todas as Tarefas", admin_cliente_tarefas_path }  
+                panel "Tarefas Vencidas" do
+                    if tarefas_vencidas?
+                        table_for tarefas_vencidas.limit(5) do
+                            column :titulo
+                            column :vencimento
+                        end
+                    else
+                        text_node "Não há tarefas vencidas"
                     end
+                end
+            end
+
+            column do
+                panel "Tarefas adicionadas recentemente" do
+                    table_for Tarefa.order("vencimento").limit(5) do  
+                        column "Vencimento", :vencimento  
+                        column "Tarefa", :titulo  
+                    end  
+                    # strong { link_to "Ver todas as Tarefas", admin_cliente_tarefas_path }  
                 end
             end
         end

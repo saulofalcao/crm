@@ -8,6 +8,8 @@ ActiveAdmin.register Cliente do
 #   redirect_to collection_path, notice: "CSV imported successfully!"
 # end
 
+
+
   # Começo Sidebar
   sidebar "Tarefas", only: [:show] do
     ul do
