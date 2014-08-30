@@ -3,12 +3,12 @@ ActiveAdmin.register_page "Dashboard" do
     menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
     content title: proc{ I18n.t("active_admin.dashboard") } do
-        div class: "blank_slate_container", id: "dashboard_default_message" do
-            span class: "blank_slate" do
-                span I18n.t("active_admin.dashboard_welcome.welcome")
-                small I18n.t("active_admin.dashboard_welcome.call_to_action")
-            end
-        end
+        # div class: "blank_slate_container", id: "dashboard_default_message" do
+        #     span class: "blank_slate" do
+        #         span I18n.t("active_admin.dashboard_welcome.welcome")
+        #         small I18n.t("active_admin.dashboard_welcome.call_to_action")
+        #     end
+        # end
         
         columns do
             column do
@@ -26,9 +26,20 @@ ActiveAdmin.register_page "Dashboard" do
 
             column do
                 panel "Tarefas adicionadas recentemente" do
-                    table_for tarefas_recentes do  
+                    table_for tarefas_recentes do 
                         column "Vencimento", :vencimento  
-                        column "Tarefa", :titulo  
+                        column "Tarefa", :titulo
+                        column "Cliente" do |tarefa|
+                            if tarefa.cliente
+                                tarefa.cliente.nome
+                            else
+                                "Nenhum"
+                            end
+                        end
+                        column "Ação" do |tarefa|
+                            # link_to("Editar", edit_admin_cliente_tarefa_path(tarefa.id))
+                            link_to("Editar", edit_admin_cliente_tarefa_path(tarefa.cliente.id, tarefa.id))
+                        end
                     end  
                     # strong { link_to "Ver todas as Tarefas", admin_cliente_tarefas_path }  
                 end

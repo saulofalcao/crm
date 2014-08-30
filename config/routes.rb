@@ -9,6 +9,7 @@
         resources :tarefas
       end
     end
+    resources :tarefas
   end
 
   # get "clientes/new"
