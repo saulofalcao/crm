@@ -1,6 +1,7 @@
 ActiveAdmin.register Tarefa do
   # belongs_to :servico, polymorphic: true
-  belongs_to  :cliente
+  # belongs_to  :cliente
+  # menu true
   # belongs_to :tarefavel, polymorphic: true
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

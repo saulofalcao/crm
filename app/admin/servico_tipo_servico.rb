@@ -1,4 +1,5 @@
 ActiveAdmin.register ServicoTipoServico do
+  menu false
 
   
   # See permitted parameters documentation:
