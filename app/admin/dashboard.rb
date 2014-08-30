@@ -38,7 +38,7 @@ ActiveAdmin.register_page "Dashboard" do
                         end
                         column "Ação" do |tarefa|
                             # link_to("Editar", edit_admin_cliente_tarefa_path(tarefa.id))
-                            link_to("Editar", edit_admin_cliente_tarefa_path(tarefa.cliente.id, tarefa.id))
+                            link_to("Editar", edit_admin_cliente_tarefa_path(tarefa.cliente_id, tarefa.id))
                         end
                     end  
                     # strong { link_to "Ver todas as Tarefas", admin_cliente_tarefas_path }  
