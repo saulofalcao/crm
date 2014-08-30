@@ -15,7 +15,8 @@ ActiveAdmin.register Tarefa do
   #  permitted << :other if resource.something?
   #  permitted
   # end
-  permit_params :vencimento, :titulo
+  permit_params :vencimento, :titulo, :cliente_id
+  menu false
 
   
 end

@@ -5,6 +5,7 @@ ActiveAdmin.register Servico  do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
+
    permit_params :valor_orcamento, :cliente_id, :tipo_servico, :observacao, :tipo_servico_executado, 
    tipo_servico_executados_attributes: [:tipo_servico_id, :id, :_destroy]
   #
@@ -17,6 +18,18 @@ ActiveAdmin.register Servico  do
   # end
   # belongs_to  :cliente
   # navigation_menu :cliente
+  controller do
+    # def create
+    #   create! do |format|
+    #     format.html { redirect_to "http://www.uol.com.br" }
+    #   end
+    # end
+    def update
+      update! do |format|
+        format.html { redirect_to admin_cliente_path(params[:servico][:cliente_id])}
+      end
+    end
+  end
 
 # Começo Show
   show do
@@ -53,7 +66,7 @@ ActiveAdmin.register Servico  do
 
     end
     
-    active_admin_comments
+    # active_admin_comments
 
   end
 #  Fim Show
@@ -63,7 +76,9 @@ ActiveAdmin.register Servico  do
 
 # começo Form
   form do |f|
-    f.inputs do
+    
+    f.inputs "Informações" do
+    f.input :cliente
 
       if f.object.new_record?
         f.has_many :tipo_servico_executados do |tse|

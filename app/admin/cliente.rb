@@ -8,24 +8,26 @@ ActiveAdmin.register Cliente do
 #   redirect_to collection_path, notice: "CSV imported successfully!"
 # end
 
+  config.filters = false
 
 
-  # Começo Sidebar
-  sidebar "Tarefas", only: [:show] do
-    ul do
-      table_for cliente.tarefas do
-        column "Tarefa" do |tarefa|
-          tarefa.titulo
-        end
-        column "Data" do |tarefa|
-          data=tarefa.vencimento
-          data.strftime("%d/%m/%Y")
-        end
-      end
-      li link_to "Nova Tarefa", new_admin_cliente_tarefa_path(params[:id])
-    end
-  end
-  # Fim Sidebar
+
+  # # Começo Sidebar Tarefas
+  # sidebar "Tarefas", only: [:show] do
+  #   ul do
+  #     table_for cliente.tarefas do
+  #       column "Tarefa" do |tarefa|
+  #         tarefa.titulo
+  #       end
+  #       column "Data" do |tarefa|
+  #         data=tarefa.vencimento
+  #         data.strftime("%d/%m/%Y")
+  #       end
+  #     end
+  #     li link_to "Nova Tarefa", new_admin_cliente_tarefa_path(params[:id])
+  #   end
+  # end
+  # # Fim Sidebar
 
 
   # scope :all
@@ -58,8 +60,9 @@ ActiveAdmin.register Cliente do
   form do |f|
     f.inputs do
        f.input :nome
+       f.input :telefone
        f.input :email, label: "E-mail"
-       f.input :rua
+       f.input :endereco
        f.input :complemento
        f.input :bairro
        f.input :cep
@@ -69,14 +72,43 @@ ActiveAdmin.register Cliente do
   end
 
 
-  sidebar "Servicos", only: [:show, :edit] do
-    ul do
-      li link_to "Servicos",    admin_cliente_servicos_path(cliente)
+  # sidebar "Servicos", only: [:show, :edit] do
+  #   ul do
+  #     table_for cliente.servicos do
+  #       column "Orçamento" do |servico|
+  #         servico.valor_orcamento
+  #       end
+  #       # column "Observação" do |servico|
+  #       #   servico.observacao
+  #       # end
+  #       column "Serviços" do |servico|
+  #         ul do
+  #           servico.tipo_servicos.each do |ts|
+  #             li ts.nome
+
+  #           end
+  #         end
+  #       end
+  #       column "Editar" do |servico|
+  #         link_to "Editar", edit_admin_cliente_servico_path(servico.cliente_id,servico.id)
+  #       end
+
+
+
+  #         # table_for servico.tipo_servicos do
+  #           # column do |tipo_servico
+  #     end
+
+  #     li link_to "Novo Serviço",    new_admin_cliente_servico_path(cliente)
       
 
-    end
+  #   end
 
-  end
+  # end
+
+  
+
+
  
 
 
@@ -98,10 +130,10 @@ ActiveAdmin.register Cliente do
     # link_to "Novo Serviço", "#{cliente.nome}" 
   end
 
-  index as: :grid do |cliente|
+  # index as: :grid do |cliente|
     # link_to image_tag(product.image_path), admin_product_path(product)
-    link_to cliente.nome, admin_cliente_path(cliente)
-  end
+    # link_to cliente.nome, admin_cliente_path(cliente)
+  # end
 
 
   # show do
@@ -134,7 +166,55 @@ ActiveAdmin.register Cliente do
           cliente.observacao
         end
       end
-    active_admin_comments
+
+
+      panel "Servicos", only: [:show, :edit] do
+        ul do
+          table_for cliente.servicos.order(created_at: :desc) do
+            column "Orçamento" do |servico|
+              servico.valor_orcamento
+            end
+            # column "Observação" do |servico|
+            #   servico.observacao
+            # end
+            column "Serviços" do |servico|
+              # ul do
+              tem_tipo_servico = servico.tipo_servicos.count
+              servico.tipo_servicos.each do |ts|
+                  
+                  tem_tipo_servico=tem_tipo_servico - 1
+                  if tem_tipo_servico > 0
+                    span ts.nome + ", "
+                  else
+                    span ts.nome  
+                  end
+              end
+              
+            end
+            column "Observação" do |servico|
+              servico.observacao
+            end
+
+            
+            column "" do |servico|
+              link_to "Editar", edit_admin_cliente_servico_path(servico.cliente_id,servico.id)
+            end
+
+
+
+              # table_for servico.tipo_servicos do
+                # column do |tipo_servico
+          end
+
+          div link_to "Novo Serviço",    new_admin_cliente_servico_path(cliente)
+          
+
+        end
+
+      end
+
+
+    # active_admin_comments
   end
 
 

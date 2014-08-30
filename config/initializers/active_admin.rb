@@ -111,6 +111,7 @@ ActiveAdmin.setup do |config|
   #
   # Default:
   # config.root_to = 'dashboard#index'
+  config.root_to = 'clientes#index'
 
 
   # == Admin Comments
@@ -240,6 +241,7 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
+  # config.filters = false
 
 
 

@@ -3,14 +3,15 @@
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  # namespace :admin do
-  #   resources :clientes do
-  #     resources :servicos do
-  #       resources :tarefas
-  #     end
-  #   end
-  #   # resources :tarefas
-  # end
+  namespace :admin do
+    resources :clientes do
+      resources :servicos
+      resources :tarefas
+        # resources :tarefas
+      
+    end
+    # resources :tarefas
+  end
 
   # get "clientes/new"
   # get "clientes/create"

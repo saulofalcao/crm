@@ -7,7 +7,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  email       :string(255)
-#  rua         :string(255)
+#  endereco    :string(255)
 #  bairro      :string(255)
 #  cep         :string(255)
 #  complemento :string(255)
