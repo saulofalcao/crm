@@ -8,7 +8,7 @@
 #  valor_orcamento :float
 #  cliente_id      :integer
 #  observacao      :text
-#
+	
 
 class Servico < ActiveRecord::Base
 	belongs_to :cliente

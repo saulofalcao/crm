@@ -5,7 +5,8 @@ ActiveAdmin.register Servico  do
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-
+  config.filters = false
+  config.clear_action_items!
    permit_params :valor_orcamento, :cliente_id, :tipo_servico, :observacao, :tipo_servico_executado, 
    tipo_servico_executados_attributes: [:tipo_servico_id, :id, :_destroy]
   #
@@ -29,7 +30,27 @@ ActiveAdmin.register Servico  do
         format.html { redirect_to admin_cliente_path(params[:servico][:cliente_id])}
       end
     end
+
+    def scoped_collection
+      end_of_association_chain.includes(:cliente)
+    end
   end
+# Começo Index
+index do
+  column "Id", :id
+  column "Cliente", sortable: 'clientes.nome' do |servico|
+    cliente = Cliente.where(id: servico.cliente_id).first #, sortable: 'clientes.nome'
+    cliente_nome =  cliente ? cliente.nome : "Nenhum"
+  end
+  column "Orçamento", :valor_orcamento
+  column "Observação", :observacao
+
+  actions
+  # actions :defaults: false
+end
+# Fim Index
+
+
 
 # Começo Show
   show do
@@ -76,9 +97,15 @@ ActiveAdmin.register Servico  do
 
 # começo Form
   form do |f|
+    f.inputs "Cliente" do
+      if f.object.new_record?
+        f.input :cliente, label: "Cliente", collection: Cliente.find(params[:cliente_id]).map { |c| [c.nome, c.id] }
+      else
+        f.input :cliente, label: "Cliente", collection: Cliente.all.map { |c| [c.nome, c.id] }
+      end
+    end
+    f.inputs "Tipo de Serviço Executado" do
     
-    f.inputs "Informações" do
-    f.input :cliente
 
       if f.object.new_record?
         f.has_many :tipo_servico_executados do |tse|
@@ -91,17 +118,21 @@ ActiveAdmin.register Servico  do
           tse.input :_destroy, :as=>:boolean, :required => false, :label=>'Remover'
         end
       end
-
+    end
+    f.inputs "Orçamento" do
       f.input :valor_orcamento, label: 'Valor Orçamento', as: :string
+    end
 
+    f.inputs "Observação" do
       f.input :observacao, label: 'Observação'
+    end
 
       # if f.object.new_record?
         # f.has_many :tarefas do |tarefa|
           # tarefa.input :tarefa, label: "Tarefa"
         # end
       # end
-    end
+    
     f.actions
   end
 # Fim Form
