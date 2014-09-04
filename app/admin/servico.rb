@@ -97,9 +97,10 @@ end
 
 # começo Form
   form do |f|
-    f.inputs "Cliente" do
+    f.inputs "Cliente" do |servico|
       if f.object.new_record?
-        f.input :cliente, label: "Cliente", collection: Cliente.find(params[:cliente_id]).map { |c| [c.nome, c.id] }
+        f.input :cliente, as: :select, label: "Cliente", collection:  [[Cliente.find(params[:cliente_id]).nome, params[:cliente_id] ] ], 
+              include_blank: false
       else
         f.input :cliente, label: "Cliente", collection: Cliente.all.map { |c| [c.nome, c.id] }
       end
