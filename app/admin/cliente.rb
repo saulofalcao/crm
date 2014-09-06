@@ -170,7 +170,8 @@ ActiveAdmin.register Cliente do
 
       panel "Servicos", only: [:show, :edit] do
         ul do
-          table_for cliente.servicos.order(created_at: :desc) do
+          # table_for cliente.servicos.order(created_at: :desc) do
+          table_for cliente.servicos.order(data_execucao: :desc) do
             column "Orçamento" do |servico|
               servico.valor_orcamento
             end
@@ -189,8 +190,10 @@ ActiveAdmin.register Cliente do
                     span ts.nome  
                   end
               end
-              
             end
+            column "Data", :data_execucao
+            column "Garantia", :data_garantia
+
             column "Observação" do |servico|
               servico.observacao
             end
@@ -199,6 +202,10 @@ ActiveAdmin.register Cliente do
             column "" do |servico|
               link_to "Editar", edit_admin_cliente_servico_path(servico.cliente_id,servico.id)
             end
+            column "" do |servico|
+              link_to "Remover", admin_servico_path(servico.id), method: :delete, data: { confirm: "Tem certeza que quer excluir o serviço #{servico.id}?", redirect_to: 'http://uol.com'}
+            end
+
 
 
 

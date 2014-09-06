@@ -8,7 +8,9 @@ ActiveAdmin.register Servico  do
   config.filters = false
   config.clear_action_items!
    permit_params :valor_orcamento, :cliente_id, :tipo_servico, :observacao, :tipo_servico_executado, 
+   :data_execucao, :data_garantia,
    tipo_servico_executados_attributes: [:tipo_servico_id, :id, :_destroy]
+
   #
   # or
   #
@@ -20,14 +22,21 @@ ActiveAdmin.register Servico  do
   # belongs_to  :cliente
   # navigation_menu :cliente
   controller do
-    # def create
-    #   create! do |format|
-    #     format.html { redirect_to "http://www.uol.com.br" }
-    #   end
-    # end
+    def create
+      create! do |format|
+        format.html { redirect_to admin_cliente_path(params[:servico][:cliente_id]) }
+      end
+    end
     def update
       update! do |format|
         format.html { redirect_to admin_cliente_path(params[:servico][:cliente_id])}
+      end
+    end
+    def destroy
+      destroy! do |format|
+        format.html { 
+          redirect_to :back, notice: "O servico com id: #{params[:id]} foi excluído com sucesso"
+        }
       end
     end
 
@@ -38,6 +47,8 @@ ActiveAdmin.register Servico  do
 # Começo Index
 index do
   column "Id", :id
+  column "Data", :data_execucao
+  column "Data Garantia", :data_garantia
   column "Cliente", sortable: 'clientes.nome' do |servico|
     cliente = Cliente.where(id: servico.cliente_id).first #, sortable: 'clientes.nome'
     cliente_nome =  cliente ? cliente.nome : "Nenhum"
@@ -63,7 +74,7 @@ end
       end
       panel "Servicos Executados" do
 
-        table_for servico.tipo_servico_executados, label: "Serviçaasdos Executados" do
+        table_for servico.tipo_servico_executados, label: "Serviços Executados" do
 
 
           column "" do |servico_executado| 
@@ -105,6 +116,11 @@ end
         f.input :cliente, label: "Cliente", collection: Cliente.all.map { |c| [c.nome, c.id] }
       end
     end
+    f.inputs "Data do Serviço" do 
+      f.input :data_execucao, label: "Data de Execução", as: :date_picker
+      f.input :data_garantia, label: "Vencimento da Garantia", as: :date_picker
+    end
+
     f.inputs "Tipo de Serviço Executado" do
     
 

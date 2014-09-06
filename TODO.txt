@@ -1,2 +1,10 @@
 #TODO
 Depois de criar um servico, ele deve voltar para a página de clientes, destacando o novo servico criado
+
+Verificar se existe algum serviço do mesmo tipo colidindo a garantia com a data de execução do novo serviço. Exemplo: um serviço de baratas foi feito com garantia até 07/11. E em 07/08 foi feito serviço de baratas de novo. Não faz sentido, a não ser que seja como garantia. Então futuramente adicionar um campo de garantia ao serviço
+
+Ao editar um serviço, sempre a intuição manda clicar no adicionar tipo de serviço em vez de atualizar serviço. corrigir
+
+ao clicar numa data de execução do serviço, ele já deve abrir automaticamente a data de garantia. Ao clicar na data de garantia, ele deve fechar o datepicker
+
+ao criar serviço novo, redirecionar para a pagina do cliente do serviço, destacando que o serviço foi criado

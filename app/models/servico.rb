@@ -8,6 +8,20 @@
 #  valor_orcamento :float
 #  cliente_id      :integer
 #  observacao      :text
+#  data_execucao   :date
+#  data_garantia   :date
+#
+
+# == Schema Information
+#
+# Table name: servicos
+#
+#  id              :integer         not null, primary key
+#  created_at      :datetime
+#  updated_at      :datetime
+#  valor_orcamento :float
+#  cliente_id      :integer
+#  observacao      :text
 	
 
 class Servico < ActiveRecord::Base

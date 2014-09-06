@@ -8,6 +8,8 @@
 #  valor_orcamento :float
 #  cliente_id      :integer
 #  observacao      :text
+#  data_execucao   :date
+#  data_garantia   :date
 #
 
 require 'spec_helper'
