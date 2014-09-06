@@ -37,6 +37,9 @@ class Servico < ActiveRecord::Base
 	has_many :tarefas, as: :tarefavel
 	accepts_nested_attributes_for :tarefas
 
+	scope :novos_servicos, -> { where('data_execucao > ?',Date.today) }
+	scope :servicos_antigos, -> { where('data_execucao <= ?', Date.today) }
+
 	def self.garantias_vencidas(cliente)
 		garantias_vencidas = []
 		cliente.servicos.find_each(batch_size: 200) do |servico|
@@ -55,5 +58,9 @@ class Servico < ActiveRecord::Base
 			end
 		end
 		return todas_garantias_vencidas
+	end
+
+	def self.novos_servicos
+
 	end
 end

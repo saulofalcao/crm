@@ -6,5 +6,13 @@ class Oportunidade < ActiveRecord::Base
   	# Cliente.find
   end
 
+  # def self.todas
+  # 	Cliente.find_each do |cliente|
+  		
+  # 	end
+  		
+  # 	end
+  # end
+
 
 end
