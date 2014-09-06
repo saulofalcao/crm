@@ -36,4 +36,24 @@ class Servico < ActiveRecord::Base
 	# tarefas
 	has_many :tarefas, as: :tarefavel
 	accepts_nested_attributes_for :tarefas
+
+	def self.garantias_vencidas(cliente)
+		garantias_vencidas = []
+		cliente.servicos.find_each(batch_size: 200) do |servico|
+			if servico.data_garantia < Date.today
+				garantias_vencidas << servico
+			end
+		end
+		return garantias_vencidas
+	end
+
+	def self.todas_garantias_vencidas
+		todas_garantias_vencidas = []
+		Servico.find_each() do |servico|
+			if servico.data_garantia < Date.today
+				todas_garantias_vencidas << servico
+			end
+		end
+		return todas_garantias_vencidas
+	end
 end
