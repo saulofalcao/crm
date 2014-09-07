@@ -185,4 +185,13 @@ ActiveRecord::Schema.define(version: 20140906210534) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
+  create_table "veiculos", force: true do |t|
+    t.string   "nome"
+    t.string   "modelo"
+    t.integer  "ano"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "cliente_id"
+  end
+
 end
