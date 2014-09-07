@@ -117,7 +117,7 @@ end
       end
     end
     f.inputs "Data do Serviço" do 
-      f.input :data_execucao, label: "Data de Execução", as: :date_picker
+      # f.input :data_execucao, label: "Data de Execução", as: :date_picker
       f.input :data_garantia, label: "Vencimento da Garantia", as: :date_picker
     end
 
