@@ -18,6 +18,9 @@
 class Cliente < ActiveRecord::Base
 	has_many :servicos
 	has_many :tarefas
+	has_many :tipo_servico_executados, through: :servicos
 	# scope :pending, where(id: "%")
+
+	include Oportunidades
 
 end

@@ -45,7 +45,7 @@ class Servico < ActiveRecord::Base
 		cliente.servicos.find_each(batch_size: 200) do |servico|
 			if servico.data_garantia < Date.today
 				garantias_vencidas << servico
-			end
+			end 
 		end
 		return garantias_vencidas
 	end
@@ -53,9 +53,11 @@ class Servico < ActiveRecord::Base
 	def self.todas_garantias_vencidas
 		todas_garantias_vencidas = []
 		Servico.find_each() do |servico|
-			if servico.data_garantia < Date.today
+
+			if servico.data_garantia < Date.today 
 				todas_garantias_vencidas << servico
-			end
+			end rescue nil
+
 		end
 		return todas_garantias_vencidas
 	end
