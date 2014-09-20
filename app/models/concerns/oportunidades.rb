@@ -43,7 +43,7 @@ module Oportunidades
 	def tipos_servicos
 		tipos_servicos = []
 		self.tipo_servico_executados.each do |tse|
-			tipos_servicos << tse.tipo_servico.nome unless tipos_servicos.include?(tse.tipo_servico.nome)
+			tipos_servicos << tse.tipo_servico.id unless tipos_servicos.include?(tse.tipo_servico.id)
 		end
 		return tipos_servicos
 	end 

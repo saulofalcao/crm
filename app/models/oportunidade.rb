@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: oportunidades
+#
+#  id              :integer         not null, primary key
+#  created_at      :datetime
+#  updated_at      :datetime
+#  cliente_id      :integer
+#  tipo_servico_id :integer
+#  ativa           :
+#
+
 class Oportunidade < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -14,6 +26,10 @@ class Oportunidade < ActiveRecord::Base
   # 	end
   # end
   # 
+  validates_uniqueness_of :tipo_servico_id, scope: :cliente_id
+
+  belongs_to  :cliente
+
   def self.encontra_servicos_futuros(cliente)
     # Cliente.find_each do |cliente|
       garantias_vencidas = []
