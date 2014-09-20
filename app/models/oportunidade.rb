@@ -30,6 +30,9 @@ class Oportunidade < ActiveRecord::Base
 
   belongs_to  :cliente
 
+  scope :ativas, where(ativa: true)
+  scope :inativas, where(ativa: false)
+
   def self.encontra_servicos_futuros(cliente)
     # Cliente.find_each do |cliente|
       garantias_vencidas = []

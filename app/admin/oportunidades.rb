@@ -1,6 +1,10 @@
 ActiveAdmin.register Oportunidade do
 # actions: false
   #menu false
+  scope :ativas
+  scope :inativas
+
+  permit_params :ativa
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
