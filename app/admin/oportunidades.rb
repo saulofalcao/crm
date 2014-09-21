@@ -18,6 +18,15 @@ ActiveAdmin.register Oportunidade do
   #   permitted << :other if resource.something?
   #   permitted
   # end
+  # controller do
+  #   # def scoped_collection
+  #   #   # Oportunidade.ativas
+  #   # end
 
+
+  # end
+  # scope_to do
+  #   Oportunidade.ativas
+  # end
 
 end

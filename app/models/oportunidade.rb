@@ -32,6 +32,8 @@ class Oportunidade < ActiveRecord::Base
 
   scope :ativas, where(ativa: true)
   scope :inativas, where(ativa: false)
+  
+  default_scope where(ativa: true)
 
   def self.encontra_servicos_futuros(cliente)
     # Cliente.find_each do |cliente|
