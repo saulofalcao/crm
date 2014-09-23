@@ -29,11 +29,12 @@ class Oportunidade < ActiveRecord::Base
   validates_uniqueness_of :tipo_servico_id, scope: :cliente_id
 
   belongs_to  :cliente
+  belongs_to  :tipo_servico
 
   scope :ativas, where(ativa: true)
   scope :inativas, where(ativa: false)
   
-  default_scope where(ativa: true)
+  # default_scope where(ativa: true)
 
   def self.encontra_servicos_futuros(cliente)
     # Cliente.find_each do |cliente|
