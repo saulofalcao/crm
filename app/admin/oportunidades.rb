@@ -61,7 +61,6 @@ ActiveAdmin.register Oportunidade do
 
   end
 
-
   index do
     column "Id", :id
     column "Data", sortable: 'oportunidades.created_at' do |oportunidade|
@@ -82,8 +81,29 @@ ActiveAdmin.register Oportunidade do
     # column "Orçamento", :valor_orcamento
     column "Observação", :observacao
 
-    actions
+    # actions :all, except: [:destroy]
+    # actions
     # actions :defaults: false
+    # column "" do |oportunidade|
+      # link_to "Visualizar", admin_oportunidade_path(oportunidade.id)
+    # end
+
+    # column "" do |oportunidade|
+      # link_to "Editar", edit_admin_oportunidade_path(oportunidade.id)
+    # end
+    actions defaults: false do |oportunidade|
+      link_to 'Visualizar', admin_oportunidade_path(oportunidade.id) 
+    end
+    actions defaults: false do |oportunidade|
+      link_to 'Editar', edit_admin_oportunidade_path(oportunidade.id)
+    end
+
+    # actions defaults: false do |oportunidade|
+    #   link_to "Editar", edit_admin_oportunidade_path(oportunidade.id)
+    # end
+
+
+    
   end
 
   # Começo edit e new
