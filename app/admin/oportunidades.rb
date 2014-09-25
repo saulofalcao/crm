@@ -6,6 +6,8 @@ ActiveAdmin.register Oportunidade do
 
   scope :ativas
   scope :inativas
+# menu_url = admin_oportunidades_path + '?scope=ativas'
+  # menu url: menu_url
 
   permit_params :ativa, :tipo_servico_id, :cliente_id, :observacao
 
@@ -38,7 +40,7 @@ ActiveAdmin.register Oportunidade do
     # end
     def scoped_collection
       end_of_association_chain.includes(:cliente, :tipo_servico)
-      # Oportunidade.ativas
+      Oportunidade.ativas
       # end_of_association_chain.includes(:tipo_servico)
     end
     def create
@@ -61,6 +63,13 @@ ActiveAdmin.register Oportunidade do
 
   end
 
+  # começo action_item
+  action_item only: [:show] do |oportunidade|
+    link_to "Editar Oportunidade", edit_admin_oportunidade_path(params[:id])
+  end
+  # fim action_item
+
+# começo index
   index do
     column "Id", :id
     column "Data", sortable: 'oportunidades.created_at' do |oportunidade|
@@ -97,14 +106,59 @@ ActiveAdmin.register Oportunidade do
     actions defaults: false do |oportunidade|
       link_to 'Editar', edit_admin_oportunidade_path(oportunidade.id)
     end
+    # actions
 
     # actions defaults: false do |oportunidade|
     #   link_to "Editar", edit_admin_oportunidade_path(oportunidade.id)
     # end
-
-
-    
   end
+  # fim index
+
+  # comeco show
+  show do
+    attributes_table do
+      row "ID" do |oportunidade|
+        oportunidade.id
+      end
+      row "Cliente" do |oportunidade|
+        Cliente.find(oportunidade.cliente_id).nome
+      end
+      row "Tipo de Serviço" do |oportunidade|
+        TipoServico.find(oportunidade.tipo_servico_id).nome
+      end
+      row "Está Ativa?" do |oportunidade|
+        oportunidade.ativa
+      end
+      row "Observação" do |oportunidade|
+        oportunidade.observacao
+      end
+      # panel "Servicos Executados" do
+
+      #   table_for servico.tipo_servico_executados, label: "Serviços Executados" do
+
+
+      #     column "" do |servico_executado| 
+      #       if servico_executado.tipo_servico
+      #         servico_executado.tipo_servico.nome
+      #       end
+      #     end
+      #   end
+    end
+      # panel "Tarefas" do
+      #   table_for servico.tarefas do
+      #     column "Tarefa" do |tarefa|
+      #       tarefa.titulo
+      #     end
+      #     column "Data" do |tarefa|
+      #       data=tarefa.vencimento
+      #       data.strftime("%d/%m/%Y")
+      #     end
+      #   end
+      # end
+
+    # end
+  end
+  # fim show
 
   # Começo edit e new
   # update do
@@ -123,7 +177,6 @@ ActiveAdmin.register Oportunidade do
     #     simple_format "Oi"
     #   end
     # end
-    
     f.inputs "Cliente" do |oportunidade|
       if f.object.new_record?
         f.input :cliente, as: :select, label: "Cliente", collection:  Cliente.all.map { |c| [c.nome, c.id]}  , 

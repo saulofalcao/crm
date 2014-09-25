@@ -48,9 +48,8 @@
   get "static_pages/ajuda"
   
 #  post "reservas/check_available"
-  
-
-  root "static_pages#home"
+  root "admin/clientes#index"  
+  # root "static_pages#home"
   #root new_reserva_path
   #root "aulas#index"
   
