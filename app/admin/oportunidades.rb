@@ -3,8 +3,8 @@ ActiveAdmin.register Oportunidade do
   #menu false
   config.filters = false
   config.clear_action_items!
-
-  scope :ativas
+  # scope :all, default: true
+  scope :ativas, default: true
   scope :inativas
 # menu_url = admin_oportunidades_path + '?scope=ativas'
   # menu url: menu_url
@@ -40,7 +40,7 @@ ActiveAdmin.register Oportunidade do
     # end
     def scoped_collection
       end_of_association_chain.includes(:cliente, :tipo_servico)
-      Oportunidade.ativas
+      # Oportunidade.ativas
       # end_of_association_chain.includes(:tipo_servico)
     end
     def create
